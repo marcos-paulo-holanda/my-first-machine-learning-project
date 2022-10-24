@@ -210,7 +210,7 @@ def classif_W9(ndig_treino,p):
     return Wd
 
 #-------------------------------------------------------------------------------------   
-def compara(vet):
+def compara(vet, n_test):
     """Retorna a porcentagem de acertos na classificação"""
     V=open('test_index.txt').read()
     V=[item.split() for item in V.split('\n')[:]]
@@ -220,7 +220,7 @@ def compara(vet):
         V[i]=V[i][0]
         
     acertos=0    
-    for v in range(len(V)):
+    for v in range(n_test):
         if V[v]==vet[v]:
             acertos+=1
     
@@ -562,7 +562,7 @@ def main():
         
         #fase de classificações
         ML=classificadora(e0,e1,e2,e3,e4,e5,e6,e7,e8,e9)
-        P=compara(ML)
+        P=compara(ML, n_test)
         print(P,'% de acerto')
         print('Tempo de execução',round(end-begin,0),'s')
         
